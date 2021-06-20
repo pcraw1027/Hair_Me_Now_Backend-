@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   resources :appointments
   resources :stylists
   resources :customers
-  resources :users
+  resources :users, only: [:create]
+  post "/login", to: "users#login"
+  get "/stylist/logged_in/:user_id", to: "stylists#user_stylist"
+  get "/appointments/stylist/:stylist_id", to: "appointments#stylist_appointments"
+  get "/prices/stylist/:stylist/:stylist_id", to: "prices#stylist_prices"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -6,6 +6,8 @@ class CreatePrices < ActiveRecord::Migration[6.1]
       t.string :url
       t.boolean :current
       t.text :comment
+      t.references :stylist, null: false, foreign_key: true
+      t.references :service, null: false, foreign_key: true
 
       t.timestamps
     end

@@ -1,7 +1,8 @@
-class CreateSalons < ActiveRecord::Migration[6.1]
+class CreateStylists < ActiveRecord::Migration[6.1]
   def change
-    create_table :salons do |t|
-      t.string :name
+    create_table :stylists do |t|
+      t.string :first_name
+      t.string :last_name
       t.string :address_1
       t.string :address_2
       t.string :city
@@ -12,6 +13,7 @@ class CreateSalons < ActiveRecord::Migration[6.1]
       t.string :url
       t.string :phone_num
       t.string :email
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

@@ -38,6 +38,11 @@ class AppointmentsController < ApplicationController
     @appointment.destroy
   end
 
+  # Find Appointments for Stylist
+  def stylist_appointments
+    render json: Appointment.requests_appointments(params[:stylist_id])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_appointment

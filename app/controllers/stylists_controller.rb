@@ -38,6 +38,11 @@ class StylistsController < ApplicationController
     @stylist.destroy
   end
 
+  # Find Stylist by User_id
+  def user_stylist
+    render json: Stylist.stylist_user(params[:user_id]), include: :appointments
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_stylist

@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(version: 2021_06_11_170626) do
     t.text "comment"
     t.boolean "pinned"
     t.string "image"
+    t.bigint "appointment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["appointment_id"], name: "index_appointment_comment_ratings_on_appointment_id"
   end
 
   create_table "appointments", force: :cascade do |t|
@@ -30,14 +32,24 @@ ActiveRecord::Schema.define(version: 2021_06_11_170626) do
     t.string "image"
     t.boolean "confirmed"
     t.boolean "completed"
+    t.bigint "customer_id", null: false
+    t.bigint "stylist_id", null: false
+    t.bigint "price_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_appointments_on_customer_id"
+    t.index ["price_id"], name: "index_appointments_on_price_id"
+    t.index ["stylist_id"], name: "index_appointments_on_stylist_id"
   end
 
   create_table "chairs", force: :cascade do |t|
     t.integer "chair_num"
+    t.bigint "stylist_id", null: false
+    t.bigint "salon_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["salon_id"], name: "index_chairs_on_salon_id"
+    t.index ["stylist_id"], name: "index_chairs_on_stylist_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -52,8 +64,10 @@ ActiveRecord::Schema.define(version: 2021_06_11_170626) do
     t.string "image"
     t.string "phone_num"
     t.string "email"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
   create_table "prices", force: :cascade do |t|
@@ -62,15 +76,25 @@ ActiveRecord::Schema.define(version: 2021_06_11_170626) do
     t.string "url"
     t.boolean "current"
     t.text "comment"
+    t.bigint "stylist_id", null: false
+    t.bigint "service_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["service_id"], name: "index_prices_on_service_id"
+    t.index ["stylist_id"], name: "index_prices_on_stylist_id"
   end
 
   create_table "product_purchases", force: :cascade do |t|
     t.float "amount"
     t.date "date"
+    t.bigint "product_id", null: false
+    t.bigint "stylist_id", null: false
+    t.bigint "salon_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_product_purchases_on_product_id"
+    t.index ["salon_id"], name: "index_product_purchases_on_salon_id"
+    t.index ["stylist_id"], name: "index_product_purchases_on_stylist_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -88,8 +112,10 @@ ActiveRecord::Schema.define(version: 2021_06_11_170626) do
     t.text "comment"
     t.boolean "pinned"
     t.string "image"
+    t.bigint "product_purchase_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_purchase_id"], name: "index_purchase_comment_ratings_on_product_purchase_id"
   end
 
   create_table "salons", force: :cascade do |t|
@@ -104,8 +130,10 @@ ActiveRecord::Schema.define(version: 2021_06_11_170626) do
     t.string "url"
     t.string "phone_num"
     t.string "email"
+    t.bigint "stylist_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["stylist_id"], name: "index_salons_on_stylist_id"
   end
 
   create_table "services", force: :cascade do |t|
@@ -129,8 +157,10 @@ ActiveRecord::Schema.define(version: 2021_06_11_170626) do
     t.string "url"
     t.string "phone_num"
     t.string "email"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_stylists_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -142,4 +172,19 @@ ActiveRecord::Schema.define(version: 2021_06_11_170626) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "appointment_comment_ratings", "appointments"
+  add_foreign_key "appointments", "customers"
+  add_foreign_key "appointments", "prices"
+  add_foreign_key "appointments", "stylists"
+  add_foreign_key "chairs", "salons"
+  add_foreign_key "chairs", "stylists"
+  add_foreign_key "customers", "users"
+  add_foreign_key "prices", "services"
+  add_foreign_key "prices", "stylists"
+  add_foreign_key "product_purchases", "products"
+  add_foreign_key "product_purchases", "salons"
+  add_foreign_key "product_purchases", "stylists"
+  add_foreign_key "purchase_comment_ratings", "product_purchases"
+  add_foreign_key "salons", "stylists"
+  add_foreign_key "stylists", "users"
 end

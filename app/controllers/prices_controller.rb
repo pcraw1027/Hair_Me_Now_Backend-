@@ -38,6 +38,11 @@ class PricesController < ApplicationController
     @price.destroy
   end
 
+  #Find Prices for Stylist
+  def stylist_prices
+    render json: Price.stylist_prices(params[:stylist_id]), include: :service
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_price

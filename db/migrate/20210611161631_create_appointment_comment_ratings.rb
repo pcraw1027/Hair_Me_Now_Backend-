@@ -5,6 +5,7 @@ class CreateAppointmentCommentRatings < ActiveRecord::Migration[6.1]
       t.text :comment
       t.boolean :pinned
       t.string :image
+      t.references :appointment, null: false, foreign_key: true
 
       t.timestamps
     end

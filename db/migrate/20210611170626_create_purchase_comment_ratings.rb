@@ -5,6 +5,7 @@ class CreatePurchaseCommentRatings < ActiveRecord::Migration[6.1]
       t.text :comment
       t.boolean :pinned
       t.string :image
+      t.references :product_purchase, null: false, foreign_key: true
 
       t.timestamps
     end

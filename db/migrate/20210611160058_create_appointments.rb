@@ -6,6 +6,9 @@ class CreateAppointments < ActiveRecord::Migration[6.1]
       t.string :image
       t.boolean :confirmed
       t.boolean :completed
+      t.references :customer, null: false, foreign_key: true
+      t.references :stylist, null: false, foreign_key: true
+      t.references :price, null: false, foreign_key: true
 
       t.timestamps
     end
