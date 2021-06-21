@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+
     render json: @user
   end
 
@@ -39,7 +40,7 @@ class UsersController < ApplicationController
       user = User.find_by(username: params[:username])
 
       if user && user.authenticate(params[:password])
-        render json: {user_id: user.id, username: user.username, token: encode_token({user_id: user.id})}
+        render json: {user_id: user.id, username: user.username, token: encode_token({user_id: user.id}), user_prices: user.user_prices, user_appointments: user.user_appointments}
       else
         render json: {message: "wrong usename and password"}
       end

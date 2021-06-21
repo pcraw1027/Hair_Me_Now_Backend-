@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :appointments
   resources :stylists
   resources :customers
-  resources :users, only: [:create]
+  resources :users, only: [:create, :index, :show]
   post "/login", to: "users#login"
   get "/stylist/logged_in/:user_id", to: "stylists#user_stylist"
   get "/appointments/stylist/:stylist_id", to: "appointments#stylist_appointments"
