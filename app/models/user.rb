@@ -20,5 +20,9 @@ class User < ApplicationRecord
         self.stylist.appointments
     end
 
+    def user_stylist
+        self.stylist
+    end
+
 
 end

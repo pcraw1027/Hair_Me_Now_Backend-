@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       user.save
       render json:user
     else
-      render jason: {error: "Not able to create a user"}
+      render json: {error: "Not able to create a user"}
     end
   end
 
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
       user = User.find_by(username: params[:username])
 
       if user && user.authenticate(params[:password])
-        render json: {user_id: user.id, username: user.username, token: encode_token({user_id: user.id}), user_prices: user.user_prices, user_appointments: user.user_appointments}
+        render json: {user_id: user.id, username: user.username, token: encode_token({user_id: user.id}), user_prices: user.user_prices, user_appointments: user.user_appointments, user_stylist: user.user_stylist}
       else
         render json: {message: "wrong usename and password"}
       end

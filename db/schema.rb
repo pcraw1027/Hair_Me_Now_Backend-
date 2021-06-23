@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_06_11_170626) do
 
   create_table "appointments", force: :cascade do |t|
     t.date "date"
-    t.time "time"
+    t.datetime "time"
     t.string "image"
     t.boolean "confirmed"
     t.boolean "completed"

@@ -5,7 +5,7 @@ class StylistSerializer < ActiveModel::Serializer
 
   has_many :appointments, serializer: AppointmentSerializer
   has_many :prices, serializer: PriceSerializer
-  has_many :customers, through: :appointments
+  has_many :customers, through: :appointments, serializer: CustomerSerializer
   # has_many :productpurchases
 
   # has_one :chair

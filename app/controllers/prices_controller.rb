@@ -15,13 +15,20 @@ class PricesController < ApplicationController
 
   # POST /prices
   def create
-    @price = Price.new(price_params)
+    price = Price.new(price_params)
 
-    if @price.save
-      render json: @price, status: :created, location: @price
+    if price.valid?
+      price.save
+      render json:price
     else
-      render json: @price.errors, status: :unprocessable_entity
+      render json: {error: "Not able to create a price"}
     end
+
+    # if @price.save
+    #   render json: @price, status: :created, location: @price
+    # else
+    #   render json: @price.errors, status: :unprocessable_entity
+    # end
   end
 
   # PATCH/PUT /prices/1
@@ -51,6 +58,6 @@ class PricesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def price_params
-      params.require(:price).permit(:amount, :image, :url, :current, :comment)
+      params.require(:price).permit(:amount, :image, :url, :current, :comment, :stylist_id, :service_id)
     end
 end

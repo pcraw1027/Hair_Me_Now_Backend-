@@ -4,7 +4,7 @@ class Price < ApplicationRecord
 
     has_many :appointments
 
-    validates :amount, numericality: {message: 'The value must be a valid price e.g. $9.99'}
+    # validates :amount, numericality: {message: 'The value must be a valid price e.g. $9.99'}
 
     def self.stylist_prices(stylist_id)
         self.where("stylist_id = #{stylist_id}")
