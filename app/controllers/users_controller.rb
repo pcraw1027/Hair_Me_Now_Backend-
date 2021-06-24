@@ -27,8 +27,24 @@ class UsersController < ApplicationController
 
     user = User.new(user_params)
 
+    stylist = Stylist.new(user_id: user.id, 
+                        first_name: "firstName",
+                        last_name: "lastName",
+                        address_1: "address1",
+                        address_2: "address2",
+                        city: "city",
+                        zip_code: "zipCode",
+                        url: "url",
+                        image: "image",
+                        email: "email",
+                        phone_num: "phoneNum",
+                        gender_service: "genderService",
+                        ethnicity_service: "ethnicityService"
+    )
+
     if user.valid?
       user.save
+      stylist.save
       render json:user
     else
       render json: {error: "Not able to create a user"}
