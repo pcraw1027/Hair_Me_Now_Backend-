@@ -27,24 +27,25 @@ class UsersController < ApplicationController
 
     user = User.new(user_params)
 
-    stylist = Stylist.new(user_id: user.id, 
-                        first_name: "firstName",
-                        last_name: "lastName",
-                        address_1: "address1",
-                        address_2: "address2",
-                        city: "city",
-                        zip_code: "zipCode",
-                        url: "url",
-                        image: "image",
-                        email: "email",
-                        phone_num: "phoneNum",
-                        gender_service: "genderService",
-                        ethnicity_service: "ethnicityService"
-    )
+    # stylist = Stylist.new(user_id: user.id, 
+    #                     first_name: "firstName",
+    #                     last_name: "lastName",
+    #                     address_1: "address1",
+    #                     address_2: "address2",
+    #                     city: "city",
+    #                     state: "state"
+    #                     zip_code: "zipCode",
+    #                     url: "url",
+    #                     image: "image",
+    #                     email: "email",
+    #                     phone_num: "phoneNum",
+    #                     gender_service: "genderService",
+    #                     ethnicity_service: "ethnicityService"
+    # )
 
     if user.valid?
       user.save
-      stylist.save
+      # stylist.save
       render json:user
     else
       render json: {error: "Not able to create a user"}
@@ -56,7 +57,9 @@ class UsersController < ApplicationController
       user = User.find_by(username: params[:username])
 
       if user && user.authenticate(params[:password])
-        render json: {user_id: user.id, username: user.username, token: encode_token({user_id: user.id}), user_prices: user.user_prices, user_appointments: user.user_appointments, user_stylist: user.user_stylist}
+        # render json: {user_id: user.id, username: user.username, token: encode_token({user_id: user.id}), user_prices: user.user_prices, user_appointments: user.user_appointments, user_stylist: user.user_stylist}        
+        # render json: {user_id: user.id, username: user.username, token: encode_token({user_id: user.id}), user_stylist: user.user_stylist, user_customer: user.user_customer, user_customer_appointments: user.user_customer_appointments, user_stylist_appointments: user.user_stylist_appointments}
+        render json: {user_id: user.id, username: user.username, token: encode_token({user_id: user.id}), user_stylist: user.user_stylist, user_customer: user.user_customer}
       else
         render json: {message: "wrong usename and password"}
       end

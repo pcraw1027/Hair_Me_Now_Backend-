@@ -6,6 +6,7 @@ class CreateStylists < ActiveRecord::Migration[6.1]
       t.string :address_1
       t.string :address_2
       t.string :city
+      t.string :state
       t.string :zip_code
       t.string :gender_service
       t.string :ethnicity_service

@@ -33,8 +33,8 @@ us9 = User.create(username: "BrentMeister", password: "1970sCar", user_type: "cu
 us10 = User.create(username: "TimCanterbury", password: "1970sCar", user_type: "customer")
 
 
-sy1 = Stylist.create(first_name: "Hess", last_name: "Hess", user_id: us3.id, phone_num: "(555) 999-9999", gender_service: "male", ethnicity_service: "all", address_1: "95 Fisher Ave", city: "White Plains", zip_code: "99999", image: "https://i.imgur.com/Kz0FODG.png")
-sy2 = Stylist.create(first_name: "Barbara", last_name: "HairDresser", user_id: us4.id, phone_num: "(555) 999-9999", gender_service: "female", ethnicity_service: "black", address_1: "95 Fisher Ave", city: "White Plains", zip_code: "99999", image: "https://i.imgur.com/F1Du6QY.jpg")
+sy1 = Stylist.create(first_name: "Hess", last_name: "Hess", user_id: us3.id, phone_num: "(555) 999-9999", gender_service: "male", ethnicity_service: "all", address_1: "95 Fisher Ave", city: "White Plains", state: "NY", zip_code: "99999", image: "https://i.imgur.com/Kz0FODG.png")
+sy2 = Stylist.create(first_name: "Barbara", last_name: "HairDresser", user_id: us4.id, phone_num: "(555) 999-9999", gender_service: "female", ethnicity_service: "black", address_1: "95 Fisher Ave", city: "White Plains", state: "NY", zip_code: "99999", image: "https://i.imgur.com/F1Du6QY.jpg")
 
 ct1 = Customer.create(first_name: "Peter", last_name: "Hess", user_id: us1.id, phone_num: "(555) 999-9999", gender: "male", ethnicity: "black")
 ct2 = Customer.create(first_name: "Danylo", last_name: "Hess", user_id: us2.id, phone_num: "(555) 999-9999", gender: "male", ethnicity: "black")

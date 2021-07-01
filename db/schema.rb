@@ -150,6 +150,7 @@ ActiveRecord::Schema.define(version: 2021_06_11_170626) do
     t.string "address_1"
     t.string "address_2"
     t.string "city"
+    t.string "state"
     t.string "zip_code"
     t.string "gender_service"
     t.string "ethnicity_service"

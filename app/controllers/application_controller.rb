@@ -20,7 +20,7 @@ class ApplicationController < ActionController::API
 
         rescue
             # user is not found because token is not provided
-            user = nill
+            user = nil
         end
 
         # if user

@@ -16,12 +16,20 @@ class User < ApplicationRecord
     #     self.stylist.appointments.customers
     # end
 
-    def user_appointments
+    def user_stylist_appointments
         self.stylist.appointments
+    end
+
+    def user_customer_appointments
+        self.customer.appointments
     end
 
     def user_stylist
         self.stylist
+    end
+
+    def user_customer
+        self.customer
     end
 
 

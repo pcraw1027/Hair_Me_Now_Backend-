@@ -15,12 +15,21 @@ class StylistsController < ApplicationController
 
   # POST /stylists
   def create
-    @stylist = Stylist.new(stylist_params)
+    # @stylist = Stylist.new(stylist_params)
 
-    if @stylist.save
-      render json: @stylist, status: :created, location: @stylist
+    # if @stylist.save
+    #   render json: @stylist, status: :created, location: @stylist
+    # else
+    #   render json: @stylist.errors, status: :unprocessable_entity
+    # end
+
+    stylist = Stylist.new(stylist_params)
+
+    if stylist.valid?
+      stylist.save
+      render json:stylist
     else
-      render json: @stylist.errors, status: :unprocessable_entity
+      render json: {error: "Not able to create a stylist"}
     end
   end
 
@@ -51,6 +60,6 @@ class StylistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def stylist_params
-      params.require(:stylist).permit(:first_name, :last_name, :address_1, :address_2, :city, :zip_code, :gender_service, :ethnicity_service, :image, :url, :phone_num, :email)
+      params.require(:stylist).permit(:first_name, :last_name, :address_1, :address_2, :city, :state, :zip_code, :gender_service, :ethnicity_service, :image, :url, :phone_num, :email, :user_id)
     end
 end

@@ -16,4 +16,12 @@ class Stylist < ApplicationRecord
     def self.stylist_user(user_id)
         Stylist.where("user_id = #{user_id}")
     end
+
+    def stylist_prices
+        self.prices
+    end
+
+    def stylist_appointments
+        self.appointments
+    end
 end
