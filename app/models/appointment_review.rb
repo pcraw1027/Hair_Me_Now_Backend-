@@ -1,4 +1,4 @@
-class AppointmentCommentRating < ApplicationRecord
+class AppointmentReview < ApplicationRecord
     belongs_to :appointment
 
     validates :rating, presence: {message: 'Must have a rating or comment'}, unless: :comment

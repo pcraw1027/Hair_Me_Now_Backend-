@@ -1,0 +1,2 @@
+class StylistCalendar < ApplicationRecord
+end

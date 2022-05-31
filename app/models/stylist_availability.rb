@@ -1,0 +1,2 @@
+class StylistAvailability < ApplicationRecord
+end

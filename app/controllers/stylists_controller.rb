@@ -48,9 +48,9 @@ class StylistsController < ApplicationController
   end
 
   # Find Stylist by User_id
-  def user_stylist
-    render json: Stylist.stylist_user(params[:user_id]), include: :appointments
-  end
+  #def user_stylist
+  #  render json: Stylist.stylist_user(params[:user_id]), include: :appointments
+  #end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -60,6 +60,6 @@ class StylistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def stylist_params
-      params.require(:stylist).permit(:first_name, :last_name, :address_1, :address_2, :city, :state, :zip_code, :gender_service, :ethnicity_service, :image, :url, :phone_num, :email, :user_id)
+      params.require(:stylist).permit(:first_name, :last_name, :address_1, :address_2, :city, :state, :zip_code, :gender_service, :ethnicity_service, :image, :url, :phone_num, :email) #, :user_id)
     end
 end

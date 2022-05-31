@@ -1,8 +1,8 @@
 class User < ApplicationRecord
     has_secure_password
     
-    has_one :customer
-    has_one :stylist
+    #has_one :customer
+    #has_one :stylist
 
     validates :username, :password, presence: true
     validates :username, :password, length: {minimum: 6}

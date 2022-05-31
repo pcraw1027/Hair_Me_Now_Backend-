@@ -1,7 +1,8 @@
 class Appointment < ApplicationRecord
     belongs_to :customer
     belongs_to :stylist
-    belongs_to :price
+    
+    has_many :appointmentservices
 
     # has_one :appointmentcommentrating
 
@@ -18,10 +19,10 @@ class Appointment < ApplicationRecord
         return full_name
     end
 
-    def appointment_style
-        style_name = self.price.service.name
-        return style_name
-    end
+    #def appointment_style
+    #    style_name = self.price.service.name
+     #   return style_name
+    #end
 
     
 end

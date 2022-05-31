@@ -1,6 +1,9 @@
 class Service < ApplicationRecord
-    has_many :prices
+    belongs_to  :stylist
+    belongs_to  :salon
 
-    validates :name, :description, presence: true
-    validates :name, :description, length: {minimum: 5, message: 'Name and Description must be at least 5 characters long'}
+    has_many  :appointmentservices
+
+    validates :title, :description, presence: true
+    validates :title, :description, length: {minimum: 5, message: 'Name and Description must be at least 5 characters long'}
 end

@@ -3,7 +3,10 @@ class AppointmentSerializer < ActiveModel::Serializer
 
   belongs_to :customer
   belongs_to :stylist
-  belongs_to :price
+  # belongs_to :price
 
+  has_many   :appointmentservice
+
+  has_one   :appointmentreview
   # has_one :appointmentcommentrating
 end

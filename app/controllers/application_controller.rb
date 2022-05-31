@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
-    before_action :logged_In?
+ #   before_action :logged_In?
 
-    def encode_token(payload)
+=begin     def encode_token(payload)
         secret = Rails.application.credentials.secret_key_base
         JWT.encode(payload, "Flatiron", "HS256")
         # 3rd arg is optional if you want to use HS256 algo
@@ -34,5 +34,5 @@ class ApplicationController < ActionController::API
 
         # render json: {error: "please Login!"} unless user
 
-    end
+    end =end
 end

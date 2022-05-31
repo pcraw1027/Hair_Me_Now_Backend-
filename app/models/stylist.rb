@@ -1,10 +1,14 @@
 class Stylist < ApplicationRecord
-    belongs_to :user
+    #belongs_to :user
 
     has_many :appointments
-    has_many :prices
+    has_many :services
     has_many :customers, through: :appointments
     has_many :productpurchases
+    has_many :productreviews
+    has_many :socialsites
+    has_many :stylistavailabilities
+    has_many :stylistcalendars
 
     # has_one :chair
 
@@ -13,13 +17,13 @@ class Stylist < ApplicationRecord
     validates :phone_num, presence: {message: 'Must have a phone number or email'}, unless: :email
     validates :email, presence: {message: 'Must have an email or phone number'}, unless: :phone_num
 
-    def self.stylist_user(user_id)
-        Stylist.where("user_id = #{user_id}")
-    end
+    #def self.stylist_user(user_id)
+    #    Stylist.where("user_id = #{user_id}")
+    #end
 
-    def stylist_prices
-        self.prices
-    end
+    #def stylist_prices
+    #    self.prices
+    #end
 
     def stylist_appointments
         self.appointments
